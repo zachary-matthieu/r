@@ -1,0 +1,72 @@
+plot(iris)
+plot(iris$Petal.Length, iris$Petal.Width, 
+     col = "#cc0000", 
+     pch = 19, 
+     main = "Iris: Petal Length vs. Petal Width", 
+     xlab = "Petal Length", 
+     ylab = "Petal Width")
+
+library(datasets)
+
+?mtcars
+
+head(mtcars)
+
+barplot(mtcars$cyl)
+
+cylinders <- table(mtcars$cyl)
+
+barplot(cylinders)
+
+plot(cylinders)
+
+head(iris)
+
+hist(iris$Sepal.Length)
+
+hist(iris$Sepal.Width)
+
+hist(iris$Petal.Length)
+
+hist(iris$Petal.Width)
+
+par(mfrow = c(3, 1))
+
+hist(iris$Petal.Width[iris$Species == "setosa"],
+     xlim = c (0, 3),
+     breaks = 9,
+     main = "Setosa Petal Width",
+     xlab = "",
+     col = "red")
+
+hist(iris$Petal.Width[iris$Species == "versicolor"],
+     xlim = c (0, 3),
+     breaks = 9,
+     main = "Versicolor Petal Width",
+     xlab = "",
+     col = "purple")
+
+hist(iris$Petal.Width[iris$Species == "virginica"],
+     xlim = c (0, 3),
+     breaks = 9,
+     main = "Virginica Petal Width",
+     xlab = "",
+     col = "blue")
+
+par(mfrows = c(1,1))
+
+?mtcars
+
+head(mtcars)  
+
+hist(mtcars$wt)
+
+hist(mtcars$mpg)
+
+plot(mtcars$wt, mtcars$mpg,
+  pch = 19, #Solid Circle
+  cex = 1.5, #Size
+  col = "#cc0000", #Color
+  main = "MPG In Relation to Weight of Cars", 
+  xlab = "Weight (1k pounds)",
+  ylab = "MPG")
