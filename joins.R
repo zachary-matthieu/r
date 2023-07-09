@@ -37,3 +37,5 @@ continent <- gapminder %>%
 df_j1 <- left_join(country, continent, by = 'year')
 
 df_j2 <- inner_join(country, continent, by = 'year')
+
+df_j3 <- right_join(country, continent, by = 'year')
