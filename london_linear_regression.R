@@ -63,3 +63,9 @@ confint(MWT1Best_FEV1)
 # Residual Plots
 par(mfrow=c(2,2)) 
 plot(MWT1Best_FEV1)
+
+# Multiple Linear REgression Model 
+MWT1Best_FEV1_AGE <- lm(MWT1Best ~ FEV1 + AGE, data = copd) 
+
+# Summary
+summary(MWT1Best_FEV1_AGE)
