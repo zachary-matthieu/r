@@ -45,7 +45,7 @@ plot_predictions <- data.frame(
   data_test$Petal.Width,
   predicted = predictions)
 
-# REnaming Columns
+# Renaming Columns
 colnames(plot_predictions) <- c("Sepal.Length",
                                 "Sepal.Width",
                                 "Petal.Length",
