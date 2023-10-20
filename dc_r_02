@@ -1,0 +1,26 @@
+# Load the gapminder package
+library(gapminder)
+
+# Load the dplyr package
+library(dplyr)
+
+# Look at the gapminder dataset
+gapminder
+
+
+
+library(gapminder)
+library(dplyr)
+
+# Filter the gapminder dataset for the year 1957
+gapminder %>%
+    filter(year == 1957)
+
+
+
+library(gapminder)
+library(dplyr)
+
+# Filter for China in 2002
+gapminder %>%
+    filter(country == 'China')
