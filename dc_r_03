@@ -144,3 +144,136 @@ counties_selected %>%
   # Count the states with more people in Metro or Nonmetro areas
   ungroup() %>% 
   count(metro)
+
+
+
+# Glimpse the counties table
+glimpse(counties)
+
+counties %>%
+  # Select state, county, population, and industry-related columns
+  select(state, county, population, professional:production) %>%
+  # Arrange service in descending order 
+  arrange(desc(service))
+
+
+
+counties %>%
+  # Select the state, county, population, and those ending with "work"
+  select(state, county, population, ends_with("work")) %>%
+  # Filter for counties that have at least 50% of people engaged in public work
+  filter(public_work >= 50)
+
+
+
+counties %>%
+  # Count the number of counties in each state
+  count(state) %>%
+  # Rename the n column to num_counties
+  rename(num_counties = n)
+
+
+
+counties %>%
+  # Select state, county, and poverty as poverty_rate
+  select(state, county, poverty_rate = poverty)
+
+
+
+counties_selected %>%
+  # Move the density column to the end
+  relocate(density, .after = last_col()) %>%
+  # Move the population column to before land_area
+  relocate(population, .before = land_area)
+
+
+
+# Change the name of the unemployment column
+counties %>%
+  rename(unemployment_rate = unemployment)
+
+# Keep the state and county columns, and the columns containing poverty
+counties %>%
+  select(state, county, contains("poverty"))
+
+# Calculate the fraction_women column without dropping the other columns
+counties %>%
+  mutate(fraction_women = women / population)
+
+# Move the region column to before state
+counties %>%
+  relocate(region, .before = state)
+
+
+
+babynames %>%
+  # Find the most common name in each year
+  group_by(year) %>%
+  slice_max(number, n = 1)
+
+
+
+selected_names <- babynames %>%
+  # Filter for the names Steven, Thomas, and Matthew 
+  filter(name %in% c("Steven", "Thomas", "Matthew"))
+
+
+
+selected_names <- babynames %>%
+  # Filter for the names Steven, Thomas, and Matthew 
+  filter(name %in% c("Steven", "Thomas", "Matthew"))
+
+# Plot the names using a different color for each name
+ggplot(selected_names, aes(x = year, y = number, color = name)) +
+  geom_line()
+
+
+
+# Calculate the fraction of people born each year with the same name
+babynames %>%
+  group_by(year) %>%
+  mutate(year_total = sum(number)) %>%
+  ungroup() %>%
+  mutate(fraction = number / year_total)
+
+
+
+# Calculate the fraction of people born each year with the same name
+babynames %>%
+  group_by(year) %>%
+  mutate(year_total = sum(number)) %>%
+  ungroup() %>%
+  mutate(fraction = number / year_total) %>%
+  # Find the year each name is most common
+  group_by(name) %>%
+  slice_max(fraction, n = 1)
+
+
+
+babynames %>%
+  # Add columns name_total and name_max for each name
+  group_by(name) %>%
+  mutate(name_total = sum(number),
+         name_max = max(number))
+
+
+
+babynames %>%
+  # Add columns name_total and name_max for each name
+  group_by(name) %>%
+  mutate(name_total = sum(number),
+         name_max = max(number)) %>%
+  # Ungroup the table 
+  ungroup() %>%
+  # Add the fraction_max column containing the number by the name maximum 
+  mutate(fraction_max = number / name_max)
+
+
+
+names_filtered <- names_normalized %>%
+  # Filter for the names Steven, Thomas, and Matthew
+  filter(name %in% c("Steven", "Thomas", "Matthew"))
+
+# Visualize the names in names_filtered over time
+ggplot(names_filtered, aes(x = year, y = fraction_max, color = name)) +
+  geom_line()
