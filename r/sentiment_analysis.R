@@ -168,10 +168,3 @@ sentimented %>%
   summarise(count = n(), percent = count/nrow(sentimented)) %>%
   ggplot(aes(x = '', y = percent, fill = sentiment)) +
   geom_bar(width = 1, stat = 'identity')
-
-
-
-
-
-
-
