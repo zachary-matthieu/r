@@ -40,5 +40,3 @@ cars %>%
 qplot(speed, dist, data = cars) +
   geom_point() +
   geom_smooth(method = "lm", se = F)
-
-  
