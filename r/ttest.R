@@ -72,20 +72,3 @@ gm %>%
 gm %>%
   filter(year %in% c(1957, 2007) & continent == "Africa") %>%
   t.test(lifeExp ~ year, data = ., paired = T, conf.level = 0.95)
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
